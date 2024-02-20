@@ -1,0 +1,74 @@
+from tkinter import *  
+root = Tk()  
+root.geometry("500x500") 
+menubar = Menu(root)
+
+file = Menu(menubar, tearoff=0)
+File=["New Notebook","Open...","Make a Copy...","Save As","Rename...","Save and Checkpoint (Ctrl+S)","Revert to checkpoint","Print Preview","Download As","Trusted Notebook","Close and Hault"]
+for x in range(11):
+    if x==2 or x==6 or x==7 or x==9:
+        file.add_separator()
+    if x==9:
+        st='disabled'
+    else:
+        st='active'
+    file.add_command(label=File[x],state=st)
+menubar.add_cascade(label="File", menu=file)
+
+edit=Menu(menubar,tearoff=0)
+Edit=["Copy Cells","Cut Cells","Paste cells Above","Paste cells Below","Paste cells and restart","Delete Cells","Undo Delete Cells","Split Cell","Merge cell above","Merge cell below","Move Cell up","Move Cell Down","EditNotebook Metadata","Find and Replace","Cut Cell Attachments","Copy Cells Attachment","Paste Cell Attachments","Insert Image"]
+for x in range(18):
+    if x==7 or x==10 or x==12 or x==13 or x==17:
+        edit.add_separator()
+    if x==2 or x==3 or x==4 or x==6 or x==16 or x==17:
+        st='disabled'
+    else:
+        st="active"
+    edit.add_command(label=Edit[x],state=st)
+menubar.add_cascade(label="Edit",menu=edit)
+
+view = Menu(menubar, tearoff=0)
+View=["Toggle Header","Toggle Toolbars","Toggle Line Numbers","Cell Tolbar"]
+for x in range(4):
+    view.add_command(label=View[x])
+menubar.add_cascade(label="View", menu=view)
+
+insert = Menu(menubar, tearoff=0)
+insert.add_command(label="Insert Cell Above")
+insert.add_command(label="Insert Cell below")
+menubar.add_cascade(label="Insert",menu=insert)
+
+cell=Menu(menubar,tearoff=0)
+Cell=["Run Cells","Run Cells and Select Below","Run Cells and Insert Below","Run All","Run All Above","Run all Below","Cell Type","Cell Type","Current Outputs","All Output"]
+for x in range(9):
+    if x==6:
+        cell.add_separator()
+    cell.add_command(label=Cell[x])
+menubar.add_cascade(label="Cell",menu=cell)
+
+kernel=Menu(menubar,tearoff=0)
+Kernel=["Interrupt","Restart","Restart and Clear Output","Restart and Run All","Reconnect","Shutdown","Change Kernel"]
+for x in range(7):
+    if x==6:
+        kernel.add_separator()
+    kernel.add_command(label=Kernel[x])
+menubar.add_cascade(label="Kernel",menu=kernel)
+
+widgets=Menu(menubar,tearoff=0)
+Widgets=["Save Notebook Widget State","Clear Notebook Widget State","Download Widget State","Embed Widgets"]
+for x in range(4):
+    if x==2:
+        widgets.add_separator()
+    widgets.add_command(label=Widgets[x])
+menubar.add_cascade(label="Widgets",menu=widgets)
+
+help1=Menu(menubar,tearoff=0)
+Help=["User Interface Tour","Keyboard Shortcuts","Edit Keyboard Shortcuts","Notebook Help","Markdown","Python Reference","IPython Reference","MunPy Reference","SciPy Reference","Matplotib Reference","SymPy Reference","Pandas Reference","About"]    
+for x in range(13):
+    if x==3 or x==5 or x==12:
+        help1.add_separator()
+    help1.add_command(label=Help[x])
+menubar.add_cascade(label="Help",menu=help1)
+
+root.config(menu=menubar)  
+root.mainloop()
